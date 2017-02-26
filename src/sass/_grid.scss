@@ -1,0 +1,166 @@
+// ============================================================
+// options
+// ============================================================
+$grid-columns:      12   !default;
+$grid-gutter-width: 20px !default;
+
+$grid-breakpoints: (
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+) !default;
+
+$container-max-widths: (
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+) !default;
+
+
+
+// box-sizing: border-box; - is required for this grid
+
+
+
+// ============================================================
+// grid-container, grid-container-fluid
+// ============================================================
+// @examples:
+//   @include grid-container;
+//   @include grid-container-fluid;
+
+%clearfix {
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+%container-fixed {
+	@extend %clearfix;
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: floor(($grid-gutter-width / 2));
+	padding-right: ceil(($grid-gutter-width / 2));
+}
+
+@mixin _grid-container-breakpoints {
+	@each $breakpoint-name in map-keys($grid-breakpoints) {
+		$breackpoint-min-width: map-get($grid-breakpoints,     $breakpoint-name);
+		$container-max-width:   map-get($container-max-widths, $breakpoint-name);
+		
+		%container-media-#{$breakpoint-name} {
+			@media (min-width: $breackpoint-min-width) {
+				width: $container-max-width;
+			}
+		}
+	}
+}
+
+@include _grid-container-breakpoints;
+
+@mixin grid-container {
+	@extend %container-fixed;
+	max-width: 100%;
+
+	@each $breakpoint-name in map-keys($grid-breakpoints) {
+		@extend %container-media-#{$breakpoint-name};
+	}
+}
+
+@mixin grid-container-fluid {
+	@extend %container-fixed;
+}
+
+
+
+// ============================================================
+// grid-row
+// ============================================================
+// @example:
+//   @include grid-row;
+
+@mixin grid-row($gutter: $grid-gutter-width) {
+	@extend %clearfix;
+
+	margin-left: ceil($gutter / -2);
+	margin-right: floor($gutter / -2);
+}
+
+
+
+// ============================================================
+// grid-column($sizes...)
+// ============================================================
+// examples: 
+//   @include grid-column(6);
+//   @include grid-column(md 3);
+//   @include grid-column(12, sm 6, md 4, lg 3, xl 2);
+
+%grid-column-common {
+	position: relative;
+	min-height: 1px;
+	padding-left:  ($grid-gutter-width / 2);
+	padding-right: ($grid-gutter-width / 2);
+}
+
+@mixin grid-column($sizes...) {
+	@extend %grid-column-common;
+	
+	@each $size in $sizes {
+		@if length($size) == 1 {
+			$columns: nth($size, 1);
+			float: left;
+			width: percentage(($columns / $grid-columns));
+		} @else {
+			$breakpoint-name: nth($size, 1);
+			$breackpoint-min-width: map-get($grid-breakpoints, $breakpoint-name);
+			$columns: nth($size, 2);
+			@media (min-width: $breackpoint-min-width) {
+				float: left;
+				width: percentage(($columns / $grid-columns));
+			}
+		}
+	}
+}
+
+
+
+// ============================================================
+// grid-column-modifier($type, $sizes...)
+// ============================================================
+// $type: offset | pull | push
+// examples:
+//   @include grid-column-modifier(offset, 2, md 0);
+//   @include grid-column-modifier(pull, md 2, lg 0);
+
+@mixin _grid-column-modifier($type, $columns) {
+	@if $type == push {
+		left: if($columns > 0, percentage($columns / $grid-columns), auto);
+	} @else if $type == pull {
+		right: if($columns > 0, percentage($columns / $grid-columns), auto);
+	} @else if $type == offset {
+		margin-left: percentage(($columns / $grid-columns));
+	}
+}
+
+@mixin grid-column-modifier($type, $sizes...) {
+	@each $size in $sizes {
+		@if length($size) == 1 {
+			$columns: nth($size, 1);
+			@include _grid-column-modifier($type, $columns);
+		} @else {
+			$breakpoint-name: nth($size, 1);
+			$breackpoint-min-width: map-get($grid-breakpoints, $breakpoint-name);
+			$columns: nth($size, 2);
+			@media (min-width: $breackpoint-min-width) {
+				@include _grid-column-modifier($type, $columns);
+			}
+		}
+	}
+}
+

@@ -74,7 +74,7 @@ gulp.task('markup', () => gulp
 )
 
 gulp.task('images', () => gulp
-	.src(FOLDERS.source.images)
+	.src(`${SOURCE_FOLDER}/img/**/*`)
 	.pipe(cache(imagemin({
 		interlaced: true,
 		progressive: true,

@@ -94,6 +94,11 @@ body {
 	color: $color-primary;
 	text-decoration: none;
 	text-transform: uppercase;
+
+	&_wide {
+		padding-left: 26px;
+		padding-right: 26px;
+	}
 }
 
 
@@ -106,14 +111,10 @@ body {
 	&__container {
 		@include grid-container;
 		padding-bottom: 70px;
-		border-left: 1px solid red;
-		border-right: 1px solid red;
 		text-align: center;
 	}
 
-	&__navbar {
-		// @include grid-row;
-	}
+	&__navbar {}
 
 	&__inner {
 		@include grid-row;
@@ -184,7 +185,6 @@ body {
 	@include grid-row;
 
 	font-family: $font-roboto;
-	outline: 1px solid green;
 
 	&__logo {
 		@include grid-column(12, md 3, lg 2);
@@ -203,7 +203,6 @@ body {
 
 	&__nav-wrapper {
 		@include grid-column(12, md 9, lg 10);
-		outline: 1px solid purple;
 	}
 
 	&__nav {
@@ -217,7 +216,7 @@ body {
 		line-height: 1;
 
 		@media (min-width: $screen-sm) {
-
+			
 		}
 
 		@media (min-width: $screen-md) {
@@ -420,7 +419,6 @@ body {
 	
 	&__content {
 		@include grid-container;
-		// height: 460px;
 	}
 	
 	&__employers {
@@ -443,9 +441,7 @@ body {
 		padding-bottom: 21px;
 	}
 
-	&__hire-button {
-
-	}
+	&__hire-button {}
 }
 
 
@@ -486,7 +482,73 @@ body {
 
 
 .section-works {
-	height: 737px;
+	// height: 737px;
+
+	&__header {
+		@include grid-container;
+		padding-left: 0;
+		padding-right: 0;
+		padding-bottom: 70px;
+		text-align: center;
+		line-height: 12px;
+
+		@media (min-width: $screen-md) {
+			text-align: left;
+		}
+	}
+
+	&__title {
+		@include grid-column(12, md 6);
+		font-family: $font-playfair-display;
+		font-weight: $font-playfair-display-bold;
+		font-size: 22px;
+		color: $color-secondary;
+		text-transform: uppercase;
+	}
+
+	&__link-wrapper {
+		@include grid-column(12, md 6);
+
+		@media (min-width: $screen-md) {
+			text-align: right;
+		}
+	}
+
+	&__link {
+		color: $color-secondary;
+		text-decoration: none;
+
+		&:after {
+			position: relative;
+			content: ' >';
+			top: 3px;
+			font-size: 24px;
+		}
+
+		&:hover {
+			// text-decoration: underline;
+		}
+	}
+
+	&__items {
+		@include grid-container-fluid;
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+	&__item {
+		@include grid-column(12, sm 6, md 4, lg 2);
+		height: 200px;
+		outline: 1px solid rgba(green, .05);
+		text-align: center;
+		line-height: 200px;
+		background: #f9f9f9;
+	}
+
+	&__button-wrapper {
+		padding-top: 70px;
+		text-align: center;
+	}
 }
 
 
@@ -497,8 +559,8 @@ body {
 
 	&__content {
 		height: 500px;
-
 	}
+
 }
 
 

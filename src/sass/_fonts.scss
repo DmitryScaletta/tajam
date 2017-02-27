@@ -1,22 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,900|Playfair+Display:400,700,900|Hammersmith+One');
 
 
-$font-roboto: 'Roboto', sans-serif;
+$font-roboto:                   'Roboto', sans-serif;
+$font-roboto-thin:              100;
+$font-roboto-light:             300;
+$font-roboto-regular:           400;
+$font-roboto-black:             900;
 
-$font-roboto-thin:    100;
-$font-roboto-light:   300;
-$font-roboto-regular: 400;
-$font-roboto-black:   900;
-
-
-$font-playfair-display: 'Playfair Display', serif;
-
+$font-playfair-display:         'Playfair Display', serif;
 $font-playfair-display-regular: 400;
 $font-playfair-display-bold:    700;
 $font-playfair-display-black:   900;
 
-
-$font-hammersmith-one: 'Hammersmith One', sans-serif;
-
-$font-hammersmith-one-regular: 400;
+$font-hammersmith-one:          'Hammersmith One', sans-serif;
+$font-hammersmith-one-regular:  400;
 

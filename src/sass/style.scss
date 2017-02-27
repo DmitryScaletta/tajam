@@ -26,8 +26,8 @@ body {
 .section {
 
 	&__overlay {
-		background: rgba(#311d5e, .85);
-		background: $section-overlay;
+		background: $overlay-color-fallback;
+		background: linear-gradient(0deg, $overlay-color-from, $overlay-color-to);
 	}
 
 	&__inner {
@@ -57,13 +57,13 @@ body {
 		padding-bottom: 7px;
 		font-weight: $font-playfair-display-bold;
 		text-transform: uppercase;
-		color: #413d4b;
+		color: $color-titles;
 		font-size: 22px;
 		line-height: 1;
 	}
 
 	&__subtitle {
-		color: #2f2d35;
+		color: $color-subtitles;
 		line-height: 1;
 	}
 }
@@ -74,19 +74,19 @@ body {
 	display: inline-block;
 	padding: 11px 14px;
 	border-radius: 2px;
-	border: 1px solid #00e0d0;
+	border: 1px solid $color-primary;
 	font-size: 16px;
 	line-height: 16px;
 	font-family: $font-hammersmith-one;
 	font-weight: $font-hammersmith-one-regular;
-	color: #00e0d0;
+	color: $color-primary;
 	text-decoration: none;
 	text-transform: uppercase;
 }
 
 
 
-.section-header {
+.header {
 	background: url("../img/section-header-bg.jpg") 50% no-repeat;
 	background-size: cover;
 	color: #fff;
@@ -132,7 +132,7 @@ body {
 			bottom: 25px;
 			height: 1px;
 			width: 50px;
-			background: #00e0d0;
+			background: $color-primary;
 		}
 	}
 
@@ -161,7 +161,7 @@ body {
 
 		&_active {
 			border: none;
-			background: #00e0d0;
+			background: $color-primary;
 		}
 	}
 }
@@ -172,8 +172,6 @@ body {
 	@include grid-row;
 	font-family: $font-roboto;
 	outline: 1px solid green;
-	// padding-top: 12px;
-	// padding-bottom: 12px;
 
 	&__logo {
 		@include grid-column(12, md 4, lg 2);
@@ -182,7 +180,7 @@ body {
 		height: 80px;
 		line-height: 80px;
 		background: url("../img/logo.png") 9px 50% no-repeat;
-		color: #00e0d0;
+		color: $color-primary;
 		font-weight: $font-roboto-thin;
 		font-size: 30px;
 		text-align: left;
@@ -222,7 +220,7 @@ body {
 		
 		&_active,
 		&:hover {
-			color: #00e0d0;
+			color: $color-primary;
 		}
 	}
 }
@@ -235,7 +233,7 @@ body {
 	padding-left: 0;
 	padding-top: 70px;
 	padding-bottom: 70px;
-	color: #413d4b;
+	color: $color-titles;
 
 	&__image {
 		@include grid-column(12, md 5);
@@ -303,12 +301,17 @@ body {
 
 .section-expertise {
 	
+	&__content {
+		height: 500px;
+	}
 }
 
 .section-team {
 	background: url("../img/section-team-bg.jpg") 50% no-repeat;
 	background-size: cover;
-	// padding-top: 70px;
-	// padding-bottom: 70px;
+	
+	&__content {
+		height: 460px;
+	}
 
 }

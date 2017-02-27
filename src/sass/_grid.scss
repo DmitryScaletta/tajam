@@ -5,9 +5,9 @@ $grid-columns:      12   !default;
 $grid-gutter-width: 20px !default;
 
 $grid-breakpoints: (
-	sm: 576px,
-	md: 768px,
-	lg: 992px,
+	sm: $screen-sm,
+	md: $screen-md,
+	lg: $screen-lg,
 ) !default;
 
 $container-max-widths: (

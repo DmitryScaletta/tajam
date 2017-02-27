@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="svg4513"
+   width="682.34778"
+   height="704.66663"
+   viewBox="0 0 682.34778 704.66662"
+   sodipodi:docname="icon-monitor.png"
+   inkscape:version="0.92.1 r15371">
+  <metadata
+     id="metadata4519">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs4517">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4529">
+      <stop
+         style="stop-color:#00e0d0;stop-opacity:1"
+         offset="0"
+         id="stop4525" />
+      <stop
+         style="stop-color:#4aa3cc;stop-opacity:1"
+         offset="1"
+         id="stop4527" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4529"
+       id="linearGradient4531"
+       x1="-7.3271167e-010"
+       y1="352.33332"
+       x2="682.34781"
+       y2="352.33332"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     id="namedview4515"
+     showgrid="false"
+     inkscape:zoom="1.1838375"
+     inkscape:cx="227.13798"
+     inkscape:cy="356.8902"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4513" />
+  <path
+     style="fill:url(#linearGradient4531);stroke-width:1.33333337;fill-opacity:1"
+     d="m 213.84057,703.70947 c -4.72644,-1.14823 -11.56112,-7.26234 -13.61608,-12.18054 -2.54984,-6.10264 -1.64158,-16.54185 1.84561,-21.21256 6.45463,-8.64526 7.60079,-8.94553 35.86385,-9.39564 l 25.90662,-0.41256 V 616.65271 572.79724 L 168.1739,572.3828 72.507226,571.96836 61.812456,568.35591 C 30.343996,557.7266 8.2899556,533.01815 1.8841856,501.21473 -0.01593444,491.78098 -0.20060444,468.48167 0.13613556,280.66665 0.49592556,79.991285 0.62278556,70.341044 2.9931856,63.333332 13.289156,32.894865 34.787626,11.639935 64.576936,2.4472184 72.158926,0.1074836 84.307266,0 341.1739,0 c 256.86664,0 269.01499,0.1074836 276.59697,2.4472184 29.78931,9.1927166 51.28779,30.4476466 61.58375,60.8861136 2.3704,7.007712 2.49727,16.657953 2.85706,217.333318 0.33673,187.81502 0.15206,211.11433 -1.74806,220.54808 -6.4065,31.80714 -28.48016,56.53455 -59.92827,67.13303 l -10.69477,3.60431 -85,0.42961 -85,0.42962 v 43.92768 43.92766 h 24.45696 c 22.95892,0 24.81258,0.18807 30.26301,3.07032 6.58436,3.48189 11.94669,11.97857 11.94669,18.92968 0,6.95111 -5.36233,15.44779 -11.94669,18.92968 l -5.80607,3.07032 -136.12361,-0.15467 c -74.86801,-0.0851 -137.32364,-0.4462 -138.7903,-0.8025 z m 182,-87.04283 v -44 h -44 -44 v 44 44 h 44 44 z m 216.19729,-92.19727 c 9.59,-4.49612 17.77599,-12.68211 22.27211,-22.27211 3.39549,-7.24241 3.54713,-8.56391 3.96223,-34.53061 l 0.43161,-27 H 341.1739 43.644006 l 0.43161,27 c 0.4151,25.9667 0.56673,27.2882 3.96223,34.53061 6.02665,12.85452 17.9048,22.49092 30.92771,25.09077 3.04792,0.60847 122.541674,1.01759 265.541684,0.90914 l 260.00001,-0.19719 z M 638.19502,236.97136 637.84058,77.276066 633.47986,68.418772 C 628.48462,58.272695 622.45437,52.417883 611.90142,47.46815 l -7.39417,-3.468151 H 341.14586 77.784486 l -8.85789,4.360725 c -10.14655,4.995134 -16.00135,11.025199 -20.95122,21.578433 l -3.46815,7.394174 -0.35444,159.666659 -0.35445,159.66666 H 341.1739 638.54948 Z"
+     id="path4523"
+     inkscape:connector-curvature="0" />
+</svg>

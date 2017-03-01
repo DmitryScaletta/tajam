@@ -5,6 +5,7 @@ const csso         = require('gulp-csso')
 const autoprefixer = require('gulp-autoprefixer')
 const babel        = require('gulp-babel')
 const uglify       = require('gulp-uglify')
+const concat       = require('gulp-concat')
 const inlinesource = require('gulp-inline-source')
 const minifyMarkup = require('gulp-htmlmin')
 const imagemin     = require('gulp-imagemin')
@@ -63,8 +64,8 @@ gulp.task('scripts', () => gulp
 	.pipe(babel({
 		presets: ['es2015']
 	}))
-	// .pipe(concat('bundle.js'))
-	.pipe(uglify())
+	.pipe(concat('script.js'))
+	// .pipe(uglify())
 	.pipe(gulp.dest(FOLDERS.output.scripts))
 )
 

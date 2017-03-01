@@ -2,7 +2,7 @@
 const headerslider = document.getElementById('header-slider')
 
 
-simpleSlider(headerslider, {
+simpleSlider(headerslider, 7500, {
 	slide:           'header-slider__slide',
 	slideActive:     'header-slider__slide_active',
 	slidesContainer: 'header-slider__slides',

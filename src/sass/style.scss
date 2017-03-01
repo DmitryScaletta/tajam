@@ -99,6 +99,16 @@ body {
 		padding-left: 26px;
 		padding-right: 26px;
 	}
+
+	&:hover {
+		color: lighten($color-primary, 10%);
+		border-color: lighten($color-primary, 10%);
+	}
+
+	&:active {
+		color: darken($color-primary, 10%);
+		border-color: darken($color-primary, 10%);
+	}
 }
 
 
@@ -124,7 +134,6 @@ body {
 		@include grid-column(lg 10);
 		@include grid-column-modifier(push, lg 1);
 		padding-top: 143px;
-		// padding-bottom: 127px;
 	}
 
 }

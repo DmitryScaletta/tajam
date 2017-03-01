@@ -1,4 +1,4 @@
-function simpleSlider(sliderElement, classNames) {
+function simpleSlider(sliderElement, interval = 10000, classNames) {
 	
 	classNames = {
 		slide:           classNames.slide           || 'slide',
@@ -40,6 +40,8 @@ function simpleSlider(sliderElement, classNames) {
 		changeSlide(newSlide)
 	}
 
+	if (interval !== false) setInterval(() => nextSlide(), interval)
+		
 	
 	// next, prev
 	const buttonNext = sliderElement.querySelector(`.${classNames.navNext}`)

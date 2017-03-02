@@ -28,8 +28,8 @@ const FOLDERS = {
 		html:    `${SOURCE_FOLDER}/*.html`,
 		styles:  `${SOURCE_FOLDER}/sass/**/*.scss`,
 		scripts: `${SOURCE_FOLDER}/js/**/*.js`,
-		images:  `${SOURCE_FOLDER}/img/**/*'`,
-		fonts:   `${SOURCE_FOLDER}/fonts/**/*'`,
+		images:  `${SOURCE_FOLDER}/img/**/*`,
+		fonts:   `${SOURCE_FOLDER}/fonts/**/*`,
 	},
 	output: {
 		folder:  `${OUTPUT_FOLDER}`,
@@ -42,70 +42,76 @@ const FOLDERS = {
 }
 
 
-gulp.task('styles', () => gulp
-	.src(FOLDERS.source.styles)
-	.pipe(sass({
-		// outputStyle: 'compressed', // nested | expanded | compact | compressed | 
-		// indentedSyntax: true,
-		includePaths: [
-			'node_modules/susy/sass',
-			'node_modules/flexboxgrid-sass',
-			'node_modules/bourbon-neat/core',
-		],
-	}).on('error', sass.logError))
-	// .pipe(autoprefixer('last 15 versions', 'ie 10', 'ie 11'))
-	// .pipe(csso())
-	.pipe(gulp.dest(FOLDERS.output.styles))
-	.pipe(browserSync.stream())
-)
+gulp.task('styles', () => { 
+	return gulp
+		.src(FOLDERS.source.styles)
+		.pipe(sass({
+			// outputStyle: 'compressed', // nested | expanded | compact | compressed | 
+			// indentedSyntax: true,
+			includePaths: [
+				'node_modules/susy/sass',
+				'node_modules/flexboxgrid-sass',
+				'node_modules/bourbon-neat/core',
+			],
+		}).on('error', sass.logError))
+		.pipe(autoprefixer('last 15 versions', 'ie 10', 'ie 11'))
+		.pipe(csso())
+		.pipe(gulp.dest(FOLDERS.output.styles))
+		.pipe(browserSync.stream())
+})
 
-gulp.task('scripts', () => gulp
-	.src(FOLDERS.source.scripts)
-	.pipe(babel({
-		presets: ['es2015']
-	}))
-	.pipe(concat('script.js'))
-	// .pipe(uglify())
-	.pipe(gulp.dest(FOLDERS.output.scripts))
-)
+gulp.task('scripts', () =>  {
+	return gulp
+		.src(FOLDERS.source.scripts)
+		.pipe(babel({
+			presets: ['es2015']
+		}))
+		.pipe(concat('script.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest(FOLDERS.output.scripts))
+})
 
-gulp.task('markup', () => gulp
-	.src(FOLDERS.source.html)
-	.pipe(gulp.dest(FOLDERS.output.html))
-)
+gulp.task('markup', () => {
+	return gulp
+		.src(FOLDERS.source.html)
+		.pipe(gulp.dest(FOLDERS.output.html))
+})
 
-gulp.task('images', () => gulp
-	.src(`${SOURCE_FOLDER}/img/**/*`)
-	.pipe(cache(imagemin({
-		interlaced: true,
-		progressive: true,
-		svgoPlugins: [{removeViewBox: false}],
-		use: [pngquant()]
-	})))
-	.pipe(gulp.dest(FOLDERS.output.images))
-)
+gulp.task('images', () => {
+	return gulp
+		.src(FOLDERS.source.images)
+		.pipe(cache(imagemin({
+			interlaced: true,
+			progressive: true,
+			svgoPlugins: [{removeViewBox: false}],
+			use: [pngquant()]
+		})))
+		.pipe(gulp.dest(FOLDERS.output.images))
+})
 
-gulp.task('fonts', () => gulp
-	.src(FOLDERS.source.fonts)
-	.pipe(gulp.dest(FOLDERS.output.fonts))
-)
+gulp.task('fonts', () => {
+	return gulp
+		.src(FOLDERS.source.fonts)
+		.pipe(gulp.dest(FOLDERS.output.fonts))
+})
 
 gulp.task('clean', () => del.sync('dist'))
 
-gulp.task('build', ['clean', 'scripts', 'styles', 'images', 'fonts'], () => gulp
-	.src(FOLDERS.source.html)
-	.pipe(inlinesource({
-		compress: false,
-		rootpath: FOLDERS.output.folder
-	}))
-	.pipe(minifyMarkup({
-		collapseWhitespace: true,
-		collapseBooleanAttributes: true,
-		removeComments: true,
-		removeRedundantAttributes: true,
-	}))
-	.pipe(gulp.dest(FOLDERS.output.html))
-)
+gulp.task('build', ['clean', 'scripts', 'styles', 'images', 'fonts'], () => {
+	return gulp
+		.src(FOLDERS.source.html)
+		.pipe(inlinesource({
+			compress: false,
+			rootpath: FOLDERS.output.folder
+		}))
+		.pipe(minifyMarkup({
+			collapseWhitespace: true,
+			collapseBooleanAttributes: true,
+			removeComments: true,
+			removeRedundantAttributes: true,
+		}))
+		.pipe(gulp.dest(FOLDERS.output.html))
+})
 
 gulp.task('default', ['build'])
 

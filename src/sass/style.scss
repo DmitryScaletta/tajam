@@ -85,8 +85,10 @@ body {
 .button {
 	display: inline-block;
 	padding: 11px 14px;
+	outline: none;
 	border-radius: 2px;
 	border: 1px solid $color-primary;
+	background: transparent;
 	font-size: 16px;
 	line-height: 16px;
 	font-family: $font-hammersmith-one;
@@ -94,20 +96,29 @@ body {
 	color: $color-primary;
 	text-decoration: none;
 	text-transform: uppercase;
+	cursor: pointer;
+	transition: box-shadow 0.2s linear, color 0.2s linear, border-color 0.2s linear;
 
 	&_wide {
 		padding-left: 26px;
 		padding-right: 26px;
 	}
 
+	&_wide-2 {
+		padding-left: 31px;
+		padding-right: 31px;
+	}
+
 	&:hover {
 		color: lighten($color-primary, 10%);
 		border-color: lighten($color-primary, 10%);
+		box-shadow: 0 0 3px lighten($color-primary, 10%);
 	}
 
 	&:active {
 		color: darken($color-primary, 10%);
 		border-color: darken($color-primary, 10%);
+		box-shadow: 0 0 3px darken($color-primary, 10%);
 	}
 }
 
@@ -579,7 +590,7 @@ body {
 	}
 
 	&__button-wrapper {
-		padding-top: 70px;
+		padding-top: 69px;
 		text-align: center;
 	}
 }
@@ -609,7 +620,6 @@ body {
 
 
 .reviews-slider {
-	height: 360px;
 	color: #fff;
 
 	&__content {
@@ -634,7 +644,7 @@ body {
 
 	&__desc {
 		position: relative;
-		padding-top: 62px;
+		padding-top: 63px;
 		padding-bottom: 42px;
 		font-size: 16px;
 		font-family: $font-playfair-display;
@@ -700,7 +710,7 @@ body {
 		height: 45px;
 		width: 45px;
 		cursor: pointer;
-	    vertical-align: middle;
+		vertical-align: middle;
 		&_active {
 			height: 70px;
 			width: 70px;
@@ -710,6 +720,113 @@ body {
 
 
 
-.section-contact {
-	height: 500px
+.section-contacts {
+	@include grid-container;
+
+	&__inner {
+		@include grid-row;
+	}
+
+	&__feedback {
+		@include grid-column(12, md 6);
+	}
+
+	&__form {
+		text-align: center;
+		margin-bottom: 50px;
+
+		@media (min-width: $screen-md) {
+			margin-bottom: 0;
+			text-align: left;
+		}
+	}
+
+	&__input {
+		display: block;
+		margin-bottom: 22px;
+		padding: 10px 20px 11px;
+		width: 100%;
+		max-width: 100%;
+		outline: none;
+		border: 1px solid #e5e5e5;
+		color: $color-secondary;
+		line-height: inherit;
+		transition: box-shadow 0.2s linear;
+
+		&:focus {
+			box-shadow: 0 0 3px $color-primary;
+			border: 1px solid $color-primary;
+		}
+	}
+
+	&__textarea {
+		height: 200px;
+		margin-bottom: 20px;
+	}
+
+	&__button {}
+
+	&__clients {
+		@include grid-column(12, md 6, lg 5);
+		@include grid-column-modifier(push, lg 1);
+	}
+
+	&__title {
+		padding-bottom: 33px;
+		font-size: 22px;
+		font-family: $font-playfair-display;
+		font-weight: $font-playfair-display-bold;
+		color: $color-secondary;
+		line-height: 22px;
+		text-transform: uppercase;
+		text-align: center;
+
+		@media (min-width: $screen-md) {
+			text-align: left;
+		}
+	}
+
+	&__clients-list {
+		@extend %clearfix;
+	}
+
+	&__client {
+		text-align: center;
+		height: 85px;
+		line-height: 85px;
+
+		&:before {
+			display: inline-block;
+			vertical-align: middle;
+			height: 100%;
+		}
+
+		img {
+			vertical-align: middle;
+		}
+
+		@media (min-width: $screen-sm) {
+			float: left;
+			width: 50%;
+		}
+
+		@media (min-width: $screen-md) {
+			text-align: left;
+			
+			&:nth-child(2n) {
+				text-align: right;
+			}
+		}
+	}
+}
+
+
+
+.footer {
+	background: url("../img/footer-bg.jpg") 50% no-repeat;
+	background-size: cover;
+
+	&__inner {
+		height: 400px;
+	}
 }

@@ -13,12 +13,24 @@ function simpleSlider(sliderElement, interval = 10000, classNames) {
 	
 	const slides       = sliderElement.getElementsByClassName(classNames.slide)
 	const slideCount   = slides.length
-	let   currentSlide = 0
+	let   currentSlide = -1
 	let   dots         = []
 
 	if (slideCount === 0) return
 	
-	slides[currentSlide].classList.add(classNames.slideActive)
+
+	// check if active slide already exists
+	for (let i = 0; i < slideCount; ++i) {
+		if (slides[i].classList.contains(classNames.slideActive)) {
+			currentSlide = i
+			break
+		}
+	}
+	if (currentSlide == -1) {
+		slides[0].classList.add(classNames.slideActive)
+		currentSlide = 0
+	}
+
 
 	const changeSlide = (newSlide) => {
 		slides[currentSlide].classList.remove(classNames.slideActive)

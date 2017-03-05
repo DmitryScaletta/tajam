@@ -147,7 +147,6 @@ body {
 		@include grid-column-modifier(push, lg 1);
 		padding-top: 143px;
 	}
-
 }
 
 
@@ -232,6 +231,7 @@ body {
 	
 	&__slides {
 		position: relative;
+		min-height: 230px;
 	}
 
 	&__slide {
@@ -626,6 +626,7 @@ body {
 
 	&__slides {
 		margin-bottom: 38px;
+		min-height: 250px;
 	}
 
 	&__slide {
@@ -745,6 +746,7 @@ body {
 		margin-bottom: 22px;
 		padding: 10px 20px 11px;
 		width: 100%;
+		min-width: 100%;
 		max-width: 100%;
 		outline: none;
 		border: 1px solid #e5e5e5;
@@ -828,7 +830,6 @@ body {
 
 	&__inner {
 		@include grid-container;
-		// height: 400px;
 	}
 
 	&__top {

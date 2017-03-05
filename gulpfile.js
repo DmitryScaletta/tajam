@@ -24,20 +24,21 @@ const OUTPUT_FOLDER = './dist'
 
 const FOLDERS = {
 	source: {
-		folder:  `${SOURCE_FOLDER}`,
-		html:    `${SOURCE_FOLDER}/*.html`,
-		styles:  `${SOURCE_FOLDER}/sass/**/*.scss`,
-		scripts: `${SOURCE_FOLDER}/js/**/*.js`,
-		images:  `${SOURCE_FOLDER}/img/**/*`,
-		fonts:   `${SOURCE_FOLDER}/fonts/**/*`,
+		folder:    `${SOURCE_FOLDER}`,
+		html:      `${SOURCE_FOLDER}/*.html`,
+		styles:    `${SOURCE_FOLDER}/sass/**/*.scss`,
+		scripts:   `${SOURCE_FOLDER}/js/**/*.js`,
+		polyfills: `${SOURCE_FOLDER}/js-polyfills/**/*.js`,
+		images:    `${SOURCE_FOLDER}/img/**/*`,
+		fonts:     `${SOURCE_FOLDER}/fonts/**/*`,
 	},
 	output: {
-		folder:  `${OUTPUT_FOLDER}`,
-		html:    `${OUTPUT_FOLDER}`,
-		styles:  `${OUTPUT_FOLDER}/css`,
-		scripts: `${OUTPUT_FOLDER}/js`,
-		images:  `${OUTPUT_FOLDER}/img`,
-		fonts:   `${OUTPUT_FOLDER}/fonts`,
+		folder:     `${OUTPUT_FOLDER}`,
+		html:       `${OUTPUT_FOLDER}`,
+		styles:     `${OUTPUT_FOLDER}/css`,
+		scripts:    `${OUTPUT_FOLDER}/js`,
+		images:     `${OUTPUT_FOLDER}/img`,
+		fonts:      `${OUTPUT_FOLDER}/fonts`,
 	},
 }
 
@@ -60,13 +61,21 @@ gulp.task('styles', () => {
 		.pipe(browserSync.stream())
 })
 
-gulp.task('scripts', () =>  {
+gulp.task('scripts', ['scripts:polyfills'], () =>  {
 	return gulp
 		.src(FOLDERS.source.scripts)
 		.pipe(babel({
 			presets: ['es2015']
 		}))
 		.pipe(concat('script.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest(FOLDERS.output.scripts))
+})
+
+gulp.task('scripts:polyfills', () =>  {
+	return gulp
+		.src(FOLDERS.source.polyfills)
+		.pipe(concat('polyfills.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest(FOLDERS.output.scripts))
 })

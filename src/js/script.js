@@ -26,5 +26,13 @@ simpleSlider(reviewsSlider, false, {
 
 
 document.getElementById('navbar-toggler').addEventListener('click', () => {
-	document.getElementById('navbar').classList.toggle('navbar__nav-wrapper_expanded');
+	document.getElementById('navbar').classList.toggle('navbar__nav-wrapper_expanded')
 })
+
+
+const moveTo = new MoveTo()
+
+const mainMenuContainer = document         .getElementsByClassName('navbar__nav')[0]
+const mainMenuItems     = mainMenuContainer.getElementsByClassName('navbar__link')
+
+Array.prototype.forEach.call(mainMenuItems, item => moveTo.registerTrigger(item))

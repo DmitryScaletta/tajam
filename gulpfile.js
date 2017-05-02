@@ -64,12 +64,15 @@ gulp.task('styles', () => {
 
 gulp.task('scripts', ['scripts:polyfills'], () =>  {
 	return gulp
-		.src(FOLDERS.source.scripts)
+		.src([
+			'node_modules/moveto/dist/moveTo.js',
+			FOLDERS.source.scripts,
+		])
 		.pipe(babel({
 			presets: ['es2015']
 		}))
 		.pipe(concat('script.js'))
-		.pipe(uglify())
+		// .pipe(uglify())
 		.pipe(gulp.dest(FOLDERS.output.scripts))
 })
 

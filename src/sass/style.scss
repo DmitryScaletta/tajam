@@ -98,7 +98,10 @@ body {
 	text-decoration: none;
 	text-transform: uppercase;
 	cursor: pointer;
-	transition: box-shadow 0.2s linear, color 0.2s linear, border-color 0.2s linear;
+	transition: 
+		box-shadow   $transition-duration $transition-function, 
+		color        $transition-duration $transition-function, 
+		border-color $transition-duration $transition-function;
 
 	&_wide {
 		padding-left: 26px;
@@ -172,7 +175,7 @@ body {
 	&__nav-wrapper {
 		@include grid-column(12, md 9, lg 10);
 		display: none;
-		transition: height 0.2s linear;
+		transition: height $transition-duration $transition-function;
 
 		@media (min-width: $screen-md) {
 			display: block;
@@ -225,7 +228,7 @@ body {
 		color: #fff;
 		text-decoration: none;
 		text-transform: uppercase;
-		transition: color 0.2s linear;
+		transition: color $transition-duration $transition-function;
 		
 		&_active,
 		&:hover {
@@ -249,7 +252,7 @@ body {
 	&__toggler-icon {
 		cursor: pointer;
 		user-select: none;
-		transition: color 0.2s linear;
+		transition: color $transition-duration $transition-function;
 
 		&_active,
 		&:hover {
@@ -272,7 +275,7 @@ body {
 		position: absolute;
 		visibility: hidden;
 		opacity: 0;
-		transition: visibility 0s, opacity 1s linear;
+		transition: opacity 1s $transition-function;
 		&_active {
 			visibility: visible;
 			opacity: 1;
@@ -592,7 +595,7 @@ body {
 	&__link {
 		color: $color-secondary;
 		text-decoration: none;
-		transition: color 0.2s linear;
+		transition: color $transition-duration $transition-function;
 
 		&:after {
 			position: relative;
@@ -668,7 +671,7 @@ body {
 		position: absolute;
 		visibility: hidden;
 		opacity: 0;
-		transition: visibility 0s, opacity 1s linear;
+		transition: opacity 1s $transition-function;
 		&_active {
 			visibility: visible;
 			opacity: 1;
@@ -744,7 +747,7 @@ body {
 		width: 45px;
 		cursor: pointer;
 		vertical-align: middle;
-		transition: height 0.2s linear, width 0.2s linear;
+		transition: height $transition-duration $transition-function, width $transition-duration $transition-function;
 		&_active {
 			height: 70px;
 			width: 70px;
@@ -786,7 +789,7 @@ body {
 		border: 1px solid #e5e5e5;
 		color: $color-secondary;
 		line-height: inherit;
-		transition: box-shadow 0.2s linear;
+		transition: box-shadow $transition-duration $transition-function;
 
 		&:focus {
 			box-shadow: 0 0 3px $color-primary;
@@ -940,7 +943,7 @@ body {
 		border: 1px solid rgba(#fff, .5);
 		background: transparent;
 		line-height: 1;
-		transition: box-shadow 0.2s linear;
+		transition: box-shadow $transition-duration $transition-function;
 
 		&:focus {
 			box-shadow: 0 0 2px #fff;
@@ -984,7 +987,7 @@ body {
 		font-size: 14px;
 		text-decoration: none;
 		text-align: center;
-		transition: color 0.2s linear, border-color 0.2s linear;
+		transition: color $transition-duration $transition-function, border-color $transition-duration $transition-function;
 
 		&:hover {
 			color: $color-primary;
@@ -1028,7 +1031,7 @@ body {
 	&__nav-link {
 		color: #fff;
 		text-decoration: none;
-		transition: color 0.2s linear;
+		transition: color $transition-duration $transition-function;
 
 		&:hover {
 			color: $color-primary;

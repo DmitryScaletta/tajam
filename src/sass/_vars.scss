@@ -13,3 +13,6 @@ $overlay-opacity:        .85;
 $overlay-color-from:     rgba($color-overlay-bright, $overlay-opacity);
 $overlay-color-to:       rgba($color-overlay-dark,   $overlay-opacity);
 $overlay-color-fallback: rgba(mix($color-overlay-bright, $color-overlay-dark), $overlay-opacity);
+
+$transition-duration: 0.2s;
+$transition-function: linear;

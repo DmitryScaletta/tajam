@@ -241,7 +241,7 @@ body {
 		padding-top: 15px;
 		padding-bottom:15px;
 		text-align: right;
-		font-size: 24px;
+		font-size: 26px;
 		line-height: 50px;
 		
 		@media (min-width: $screen-md) {
@@ -747,6 +747,7 @@ body {
 		width: 45px;
 		cursor: pointer;
 		vertical-align: middle;
+		user-select: none;
 		transition: height $transition-duration $transition-function, width $transition-duration $transition-function;
 		&_active {
 			height: 70px;

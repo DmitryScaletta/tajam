@@ -26,6 +26,7 @@ const FOLDERS = {
 	source: {
 		folder:    `${SOURCE_FOLDER}`,
 		html:      `${SOURCE_FOLDER}/*.html`,
+		favicon:   `${SOURCE_FOLDER}/favicon.ico`,
 		styles:    `${SOURCE_FOLDER}/sass/**/*.scss`,
 		scripts:   `${SOURCE_FOLDER}/js/**/*.js`,
 		polyfills: `${SOURCE_FOLDER}/js-polyfills/**/*.js`,
@@ -47,7 +48,7 @@ gulp.task('styles', () => {
 	return gulp
 		.src(FOLDERS.source.styles)
 		.pipe(sass({
-			// outputStyle: 'compressed', // nested | expanded | compact | compressed | 
+			// outputStyle: 'compressed', // nested | expanded | compact | compressed
 			// indentedSyntax: true,
 			includePaths: [
 				'node_modules/susy/sass',
@@ -83,10 +84,10 @@ gulp.task('scripts:polyfills', () =>  {
 gulp.task('markup', () => {
 	return gulp
 		.src(FOLDERS.source.html)
-		.pipe(gulp.dest(FOLDERS.output.html))
+		.pipe(gulp.dest(FOLDERS.output.folder))
 })
 
-gulp.task('images', () => {
+gulp.task('images', ['images:favicon'], () => {
 	return gulp
 		.src(FOLDERS.source.images)
 		.pipe(cache(imagemin({
@@ -96,6 +97,12 @@ gulp.task('images', () => {
 			use: [pngquant()]
 		})))
 		.pipe(gulp.dest(FOLDERS.output.images))
+})
+
+gulp.task('images:favicon', () => {
+	return gulp
+		.src(FOLDERS.source.favicon)
+		.pipe(gulp.dest(FOLDERS.output.folder))
 })
 
 gulp.task('fonts', () => {
@@ -119,7 +126,7 @@ gulp.task('build', ['clean', 'scripts', 'styles', 'images', 'fonts'], () => {
 			removeComments: true,
 			removeRedundantAttributes: true,
 		}))
-		.pipe(gulp.dest(FOLDERS.output.html))
+		.pipe(gulp.dest(FOLDERS.output.folder))
 })
 
 gulp.task('default', ['build'])

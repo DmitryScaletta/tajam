@@ -23,3 +23,8 @@ simpleSlider(reviewsSlider, false, {
 	navNext:         'reviews-slider__next',
 	navPrev:         'reviews-slider__prev',
 })
+
+
+document.getElementById('navbar-toggler').addEventListener('click', () => {
+	document.getElementById('navbar').classList.toggle('navbar__nav-wrapper_expanded');
+})

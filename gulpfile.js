@@ -72,7 +72,7 @@ gulp.task('scripts', ['scripts:polyfills'], () =>  {
 			presets: ['es2015']
 		}))
 		.pipe(concat('script.js'))
-		// .pipe(uglify())
+		.pipe(uglify())
 		.pipe(gulp.dest(FOLDERS.output.scripts))
 })
 

@@ -5,16 +5,6 @@
 @import "fonts";
 @import "icomoon";
 
-html {
-	box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-	box-sizing: inherit;
-}
-
 
 body {
 	font-size: 14px;
@@ -139,10 +129,6 @@ body {
 	}
 
 	&__navbar {}
-
-	&__inner {
-		@include grid-row;
-	}
 	
 	&__slider {
 		@include grid-column(lg 10);
@@ -250,6 +236,7 @@ body {
 	}
 
 	&__toggler-icon {
+		padding: 5px;
 		cursor: pointer;
 		user-select: none;
 		transition: color $transition-duration $transition-function;
@@ -340,8 +327,8 @@ body {
 
 .section-about {
 	@include grid-container;
-	padding-right: 0;
 	padding-left: 0;
+	padding-right: 0;
 	padding-top: 70px;
 	padding-bottom: 70px;
 	color: $color-secondary;
@@ -394,7 +381,6 @@ body {
 
 	&__play-link {
 		display: inline-block;
-
 		font-family: $font-roboto;
 		font-weight: $font-roboto-black;
 		font-size: 16px;
@@ -418,10 +404,8 @@ body {
 	
 	&__content {
 		@include grid-container;
-	}
-
-	&__inner {
-		@include grid-row;
+		padding-left: 0;
+		padding-right: 0;
 	}
 
 	&__item {
@@ -508,7 +492,6 @@ body {
 	}
 
 	&__hire {
-		@include grid-row;
 		color: #fff;
 		text-align: center;
 	}
@@ -611,8 +594,8 @@ body {
 
 	&__items {
 		@include grid-container-fluid;
-		padding-right: 0;
 		padding-left: 0;
+		padding-right: 0;
 	}
 
 	&__item {
@@ -638,12 +621,10 @@ body {
 
 	&__content {
 		@include grid-container;
+		padding-left: 0;
+		padding-right: 0;
 		padding-top: 70px;
 		padding-bottom: 70px;
-	}
-	
-	&__inner {
-		@include grid-row;
 	}
 
 	&__slider {
@@ -748,7 +729,9 @@ body {
 		cursor: pointer;
 		vertical-align: middle;
 		user-select: none;
-		transition: height $transition-duration $transition-function, width $transition-duration $transition-function;
+		transition: 
+			height $transition-duration $transition-function, 
+			width  $transition-duration $transition-function;
 		&_active {
 			height: 70px;
 			width: 70px;

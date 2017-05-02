@@ -14,5 +14,21 @@ $overlay-color-from:     rgba($color-overlay-bright, $overlay-opacity);
 $overlay-color-to:       rgba($color-overlay-dark,   $overlay-opacity);
 $overlay-color-fallback: rgba(mix($color-overlay-bright, $color-overlay-dark), $overlay-opacity);
 
-$transition-duration: 0.2s;
-$transition-function: linear;
+$transition-duration:    0.2s;
+$transition-function:    linear;
+
+
+// grid
+$grid-gutter-width-base: 20px;
+
+$grid-breakpoints: (
+	sm: $screen-sm,
+	md: $screen-md,
+	lg: $screen-lg,
+);
+
+$container-max-widths: (
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+);

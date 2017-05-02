@@ -1,33 +1,40 @@
 // ============================================================
 // options
 // ============================================================
-$grid-columns:      12   !default;
-$grid-gutter-width: 20px !default;
+
+$grid-columns:           12   !default;
+$grid-gutter-width-base: 30px !default;
 
 $grid-breakpoints: (
-	sm: $screen-sm,
-	md: $screen-md,
-	lg: $screen-lg,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px,
 ) !default;
 
 $container-max-widths: (
 	sm: 540px,
 	md: 720px,
 	lg: 960px,
+	xl: 1140px,
 ) !default;
 
 
 
-// box-sizing: border-box; - is required for this grid
-
-
 
 // ============================================================
-// grid-container, grid-container-fluid
+// common styles
 // ============================================================
-// @examples:
-//   @include grid-container;
-//   @include grid-container-fluid;
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
 
 %clearfix {
 	&:before,
@@ -40,28 +47,35 @@ $container-max-widths: (
 	}
 }
 
+
+// ============================================================
+// grid-container, grid-container-fluid
+// ============================================================
+// @examples:
+//   bootstrap: container
+//   @include grid-container;
+//   
+//   bootstrap: container-fluid
+//   @include grid-container-fluid;
+
 %container-fixed {
 	@extend %clearfix;
 	margin-right: auto;
-	margin-left: auto;
-	padding-left: floor(($grid-gutter-width / 2));
-	padding-right: ceil(($grid-gutter-width / 2));
+	margin-left:  auto;
+	padding-left: floor($grid-gutter-width-base / 2);
+	padding-right: ceil($grid-gutter-width-base / 2);
 }
 
-@mixin _grid-container-breakpoints {
-	@each $breakpoint-name in map-keys($grid-breakpoints) {
-		$breackpoint-min-width: map-get($grid-breakpoints,     $breakpoint-name);
-		$container-max-width:   map-get($container-max-widths, $breakpoint-name);
-		
-		%container-media-#{$breakpoint-name} {
-			@media (min-width: $breackpoint-min-width) {
-				width: $container-max-width;
-			}
+@each $breakpoint-name in map-keys($grid-breakpoints) {
+	$breackpoint-min-width: map-get($grid-breakpoints,     $breakpoint-name);
+	$container-max-width:   map-get($container-max-widths, $breakpoint-name);
+	
+	%container-media-#{$breakpoint-name} {
+		@media (min-width: $breackpoint-min-width) {
+			width: $container-max-width;
 		}
 	}
 }
-
-@include _grid-container-breakpoints;
 
 @mixin grid-container {
 	@extend %container-fixed;
@@ -82,13 +96,14 @@ $container-max-widths: (
 // grid-row
 // ============================================================
 // @example:
+//   bootstrap: row
 //   @include grid-row;
 
-@mixin grid-row($gutter: $grid-gutter-width) {
+@mixin grid-row {
 	@extend %clearfix;
 
-	margin-left: ceil($gutter / -2);
-	margin-right: floor($gutter / -2);
+	margin-left:   ceil($grid-gutter-width-base / -2);
+	margin-right: floor($grid-gutter-width-base / -2);
 }
 
 
@@ -96,16 +111,21 @@ $container-max-widths: (
 // ============================================================
 // grid-column($sizes...)
 // ============================================================
-// examples: 
+// examples:
+//   bootstrap: col-6
 //   @include grid-column(6);
+//   
+//   bootstrap: col-md-3
 //   @include grid-column(md 3);
+//   
+//   bootstrap: col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2
 //   @include grid-column(12, sm 6, md 4, lg 3, xl 2);
 
 %grid-column-common {
 	position: relative;
 	min-height: 1px;
-	padding-left:  ($grid-gutter-width / 2);
-	padding-right: ($grid-gutter-width / 2);
+	padding-left:  $grid-gutter-width-base / 2;
+	padding-right: $grid-gutter-width-base / 2;
 }
 
 @mixin grid-column($sizes...) {
@@ -115,14 +135,15 @@ $container-max-widths: (
 		@if length($size) == 1 {
 			$columns: nth($size, 1);
 			float: left;
-			width: percentage(($columns / $grid-columns));
+			width: percentage($columns / $grid-columns);
 		} @else {
-			$breakpoint-name: nth($size, 1);
-			$breackpoint-min-width: map-get($grid-breakpoints, $breakpoint-name);
-			$columns: nth($size, 2);
-			@media (min-width: $breackpoint-min-width) {
+			$breakpoint-name:      nth($size, 1);
+			$breakpoint-min-width: map-get($grid-breakpoints, $breakpoint-name);
+			$columns:              nth($size, 2);
+			
+			@media (min-width: $breakpoint-min-width) {
 				float: left;
-				width: percentage(($columns / $grid-columns));
+				width: percentage($columns / $grid-columns);
 			}
 		}
 	}
@@ -135,16 +156,21 @@ $container-max-widths: (
 // ============================================================
 // $type: offset | pull | push
 // examples:
+//   bootstrap: offset-2 offset-md-0
 //   @include grid-column-modifier(offset, 2, md 0);
+//   
+//   bootstrap: pull-md-2 pull-lg-0
 //   @include grid-column-modifier(pull, md 2, lg 0);
 
 @mixin _grid-column-modifier($type, $columns) {
+	$modifier-value: percentage($columns / $grid-columns);
+
 	@if $type == push {
-		left: if($columns > 0, percentage($columns / $grid-columns), auto);
+		left:  if($columns > 0, $modifier-value, auto);
 	} @else if $type == pull {
-		right: if($columns > 0, percentage($columns / $grid-columns), auto);
+		right: if($columns > 0, $modifier-value, auto);
 	} @else if $type == offset {
-		margin-left: percentage(($columns / $grid-columns));
+		margin-left: $modifier-value;
 	}
 }
 
@@ -154,13 +180,13 @@ $container-max-widths: (
 			$columns: nth($size, 1);
 			@include _grid-column-modifier($type, $columns);
 		} @else {
-			$breakpoint-name: nth($size, 1);
-			$breackpoint-min-width: map-get($grid-breakpoints, $breakpoint-name);
-			$columns: nth($size, 2);
-			@media (min-width: $breackpoint-min-width) {
+			$breakpoint-name:      nth($size, 1);
+			$breakpoint-min-width: map-get($grid-breakpoints, $breakpoint-name);
+			$columns:              nth($size, 2);
+			
+			@media (min-width: $breakpoint-min-width) {
 				@include _grid-column-modifier($type, $columns);
 			}
 		}
 	}
 }
-
